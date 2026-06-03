@@ -2,6 +2,7 @@ import random
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import Product, Category
 from apps.users.models import Feedback
+from .utils import get_product_query
 
 class HomeView(TemplateView):
     template_name = 'core/home.html'
@@ -70,7 +71,8 @@ class ProductView(ListView):
     paginate_by = 12
 
     def get_queryset(self):
-        return Product.objects.all()
+        q = self.request.GET.get('q')
+        return get_product_query(q)
 
 class ProductDetailView(DetailView):
     template_name = 'core/detail.html'

@@ -2,6 +2,10 @@
 {% block title %}Cataloge{% endblock title %}
 {% block content %}
 <section class="cataloge_section">
+    <form class="product_search_form" method="get">
+        <input class="product_searh_input" type="text" name="q" placeholder="Search furniture">
+        <button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
     <ul class="cataloge_list">
         {% for i in  product%}
         <!-- classes from core/home.html -->

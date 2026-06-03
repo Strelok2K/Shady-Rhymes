@@ -285,11 +285,12 @@
     padding: 10px 0;
 }
 .cataloge_section{
-    padding: 300px 80px;
+    padding: 150px 80px;
     padding-bottom: 100px;
     text-align: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .cataloge_list{
     display: flex;
@@ -444,4 +445,21 @@
     border: 1px solid black;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 30px;
+}
+.product_search_form{
+    position: relative;
+    display: inline-block;
+    margin-bottom: 150px;
+
+}
+.product_searh_input{
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0 20px;
+    width: 340px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    border: 2px solid black;
 }
