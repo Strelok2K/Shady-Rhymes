@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock title %}
+{% block content %}
+<section class="cart_section">
+    <h1 class="cart_title">Cart</h1>
+    <ul class="cataloge_list">
+        {% for i in  item%}
+        <!-- classes from core/home.html -->
+            <li class="products_item">
+                <a href="{% url 'core:product_detail' i.product.slugify %}">
+                    <div class="products_img_container">
+                        <img class="products_image" src="{{i.product.image.url}}" alt="{{i.product.name}}">
+                    </div>
+                    <div class="products_content">
+                        <h1 class="products_name">{{i.product.name}}</h1>
+                        {% if i.product.category %}
+                            <p class="products_category">{{i.product.category.name}}</p>
+                        {% endif %}
+                        <p class="products_data">{{i.product.rating}}</p>
+                        <p class="products_data">{{i.product.price}}$ x {{i.quantity}}</p>
+                    </div>
+                </a>
+                <form class="qty_form" action="{% url 'user_feedback:set_qty' i.product.slugify %}">
+                    {% csrf_token %}
+                    <input class="qty_input" type="text" name="quantity" value="{{ it.quantity }}" min="1">
+                    <button type="submit" class="qty_btn">Update</button>
+                </form>
+            </li>
+        {% empty %}
+            <p>You haven't any items in your cart</p>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock content %}

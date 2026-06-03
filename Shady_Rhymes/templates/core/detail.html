@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{object.name}}{% endblock title %}
+{% block content %}
+<section class="detail_section">
+    <div class="first_detail_bit">
+        <img class="detail_image" src="{{object.image.url}}" alt="{{object.name}} img">
+    </div>
+    <div class="second_detail_bit">
+        <div class="upper_div">
+            <div class="first_content_half">
+                <h1 class="detail_title">{{object.name}}</h1>
+                <p class="detail_subtitle">{{object.description}}</p>
+            </div>
+            <div class="second_content_half">
+                <p class="detail_integers">{{object.rating}}</p>
+                <p class="detail_integers">{{object.price}}$</p>
+            </div>
+            <a class="add_to_cart" href="{% url 'user_feedback:add_to_cart' object.slugify %}">Add To Cart</a>
+        </div>
+        <div class="down_div">
+            <ul class="products_list">
+                {% for i in random_obj %}
+                    <li class="products_item">
+                        <a href="{% url 'core:product_detail' i.slugify %}">
+                            <div class="products_img_container det_img_div">
+                                <img class="products_image det_img" src="{{i.image.url}}" alt="{{i.image.url}}">
+                            </div>
+                            <div class="products_content">
+                                <h1 class="products_name">{{i.name}}</h1>
+                                <p class="products_data">{{i.rating}}</p>
+                                <p class="products_data">{{i.price}}$</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock content %}

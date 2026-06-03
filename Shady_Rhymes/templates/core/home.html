@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+{% block content %}
+<img src="{% static '/imgs/bg-1.png' %}" class="header_bg">
+<section class="header_section">
+    <div class="header_container">
+        <h1 class="header_title">Make Your Interior More <br> Minimaistic & Modern</h1>
+        <p class="header_subtitle">Bringing interiors to life, understanding the person or people <br> living in a home is far greater need in design.</p>
+        <form class="search_form" method="post">
+                    <input class="searh_input" type="text" name="" id="" placeholder="Search furniture">
+            <button class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+</section>
+<section class="reasons">
+    <h1 class="reasons_title">Why Choosing Us</h1>
+    <ul class="reasons_list">
+        <li class="reasons_item">
+            <div class="reason_img_container">
+                <img class="reason_img" src="{% static '/imgs/rason-1.png' %}" alt="">
+            </div>
+            <h1 class="reason_title">Professionalism</h1>
+            <p class="reason_subtitle">We deliver the final work with great <br> professional way.</p>
+            <a class="reason_link" href="">more info</a>
+        </li>
+        <li class="reasons_item">
+            <div class="reason_img_container">
+                <img class="reason_img" src="{% static '/imgs/rason-2.png' %}" alt="">
+            </div>
+            <h1 class="reason_title">Smooth workflow</h1>
+            <p class="reason_subtitle">We provide the most easy smoth workflow <br> of interior design.</p>
+            <a class="reason_link" href="">more info</a>
+        </li>
+        <li class="reasons_item">
+            <div class="reason_img_container">
+                <img class="reason_img" src="{% static '/imgs/rason-3.png' %}" alt="">
+            </div>
+            <h1 class="reason_title">Trusted Platform</h1>
+            <p class="reason_subtitle">People trust us since we openend the <br> company</p>
+            <a class="reason_link" href="">more info</a>
+        </li>
+        <li class="reasons_item">
+            <div class="reason_img_container">
+                <img class="reason_img" src="{% static '/imgs/rason-4.png' %}" alt="">
+            </div>
+            <h1 class="reason_title">Qualified employee</h1>
+            <p class="reason_subtitle">Our employees are the best of the field <br> from the city</p>
+            <a class="reason_link" href="">more info</a>
+        </li>
+    </ul>
+</section>
+<section class="categories">
+    <div class="first_catigories_half">
+        <h1 class="category_title">Visualize your ideas with us</h1>
+        <p class="category_subtitle">We are ready to help you build and also realize the room design that you dream of, with <br> our experts and also the best category recommendations from us</p>
+        <div class="random_catigories">
+            {% for i in random_cat %}
+                <a href="" class="category_name">{{ i.name }}</a>
+            {% empty %}
+                <p class="category_name">There's no categories yet</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="second_category_half">
+        <img class="second_half_img" src="{% static '/imgs/category.png' %}" alt="">
+    </div>
+</section>
+<section class="products_section">
+    <h1 class="products_section_title">Products</h1>
+    <ul class="products_list">
+        {% for i in random_obj %}
+            <li class="products_item">
+                <a href="{% url 'core:product_detail' i.slugify %}">
+                    <div class="products_img_container">
+                        <img class="products_image" src="{{i.image.url}}" alt="{{i.image.url}}">
+                    </div>
+                    <div class="products_content">
+                        <h1 class="products_name">{{i.name}}</h1>
+                        <p class="products_data">{{i.rating}}</p>
+                        <p class="products_data">{{i.price}}$</p>
+                    </div>
+                </a>
+            </li>
+        {% empty %}
+            <p>There isn't any products yet</p>
+        {% endfor %}
+    </ul>
+</section>
+<section class="feedback_section">
+    <h1 class="feedback_title">what they say about our services</h1>
+    <ul class="feedback_list">
+        {% for i in random_com %}
+            <li class="comment">
+                <h1 class="comment_title">{{i.title}}</h1>
+                <p class="comment_subtitle">{{i.message}}</p>
+                <h2 class="commentator_name">{{i.name}}</h2>
+                <h3 class="commentator_role">{{i.role}}</h2>
+            </li>
+        {% empty %}
+        {% endfor %}
+    </ul>
+</section>
+<section class="contact_section">
+    <div class="contact_first_half">
+        <img class="contact_img" src="{% static '/imgs/contact_img.png' %}" alt="">
+    </div>
+    <div class="contact_second_half">
+        <h1 class="contact_title">Make your room feel homey</h1>
+        <p class="contact_subtitle">We help people not only to make the room at home better, but we help people to feel a <br> more homey and comfortable room, you don’t have to worry about the result because of <br> these interiors are made by people who are professionals in their dields with an elegant <br> and lucuriois style and with premium quality materials</p>
+        <p class="contact_subtitle">Contact us if you are interested in working with us</p>
+    </div>
+</section>
+{% endblock content %}

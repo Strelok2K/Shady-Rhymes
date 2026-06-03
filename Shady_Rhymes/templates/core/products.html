@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Cataloge{% endblock title %}
+{% block content %}
+<section class="cataloge_section">
+    <ul class="cataloge_list">
+        {% for i in  product%}
+        <!-- classes from core/home.html -->
+            <li class="products_item">
+                <a href="{% url 'core:product_detail' i.slugify %}">
+                    <div class="products_img_container">
+                        <img class="products_image" src="{{i.image.url}}" alt="{{i.name}}">
+                    </div>
+                    <div class="products_content">
+                        <h1 class="products_name">{{i.name}}</h1>
+                        {% if i.category %}
+                            <p class="products_category">{{i.category.name}}</p>
+                        {% endif %}
+                        <p class="products_data">{{i.rating}}</p>
+                        <p class="products_data">{{i.price}}$</p>
+                    </div>
+                </a>
+            </li>
+        {% empty %}
+            <p>Sorry, but there isn't any products yet</p>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock content %}
