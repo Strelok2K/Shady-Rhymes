@@ -1,7 +1,7 @@
 import random
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import Product, Category
-from apps.user_feedback.models import Feedback
+from apps.users.models import Feedback
 
 class HomeView(TemplateView):
     template_name = 'core/home.html'
